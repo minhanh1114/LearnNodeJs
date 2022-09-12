@@ -1,12 +1,16 @@
-class SiteController
-{
+const Course = require('../Models/Course'); // Tầng Models
+const { multipleMongooseToObject } = require('../../until/mongoose'); // Công cụ chuyển handlebars
+class SiteController {
     //Get /news
-    index(req,res){
-        res.render('home');
+    index(req, res, next) {
+        Course.find({})
+            .then((course) => res.render('home', { course: multipleMongooseToObject(course) }))
+            .catch(next);
     }
-    //seach
-    search(req,res){
-        res.send('search')
+
+    // [GET] Search
+    search(req, res) {
+        res.send('search');
     }
 }
-module.exports = new SiteController;
+module.exports = new SiteController();

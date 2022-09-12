@@ -1,0 +1,22 @@
+<table class='table'>
+    <thead>
+        <tr>
+            <th scope='col'>#</th>
+            <th scope='col'>First</th>
+            <th scope='col'>Last</th>
+            <th scope='col'>Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each course}}
+            <tr>
+                <th scope='row'>{{sum @index 1}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.videoId}}</td>
+                <td><a href='/course/{{this._id}}/delete'>Xóa</a></td>
+                <td><a href='/course/{{this._id}}/edit'>Sửa</a></td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
